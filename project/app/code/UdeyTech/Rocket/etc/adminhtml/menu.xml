@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+      <add id="UdeyTech_Rocket::setting" title="UdeyTech" translate="title" module="UdeyTech_Rocket"  sortOrder="50"  resource="UdeyTech_Rocket::setting"/>
+      <add id="UdeyTech_Rocket::config" title="Configuration" translate="title" module="UdeyTech_Rocket" parent="UdeyTech_Rocket::setting" sortOrder="10" action="adminhtml/system_config/edit/section/theme_setting" resource="UdeyTech_Rocket::config"/>
+    </menu>
+</config>

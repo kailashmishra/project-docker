@@ -1,0 +1,57 @@
+<?php
+$categories = $this->getStoreCategories(true,false,true);
+$categoryHelper = $this->getCategoryHelper();
+?>
+<?php if ($block->canCategorySliderShow()): ?>
+<section id="demos">
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="owl-carousel owl-theme">
+<?php
+foreach($categories as $category):
+     if (!$category->getIsActive()) {
+        continue;
+     }
+     $categoryId = $category->getId();
+     $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+     $category = $objectManager->create('Magento\Catalog\Model\Category')->load($categoryId);
+     $_outputhelper    = $this->helper('Magento\Catalog\Helper\Output');
+     $_imgUrl = $category->getImageUrl();
+?>
+
+      <div class="item">
+        <li><a href="<?php echo $categoryHelper->getCategoryUrl($category) ?>"><?php echo $category->getName() ?></a></li>
+        <img src="<?php  echo $_imgUrl; ?>" height="50" width="50">
+      </div>
+
+    <?php
+    endforeach;
+    ?>
+          </div>
+        </div>
+      </div>
+    </section>
+    <?php endif; ?>
+
+
+
+
+<script type="text/javascript" xml="space">
+    require([
+        'jquery',
+        'owlcarousel'
+    ], function($){
+        $(document).ready(function() {
+              var owl = $('.owl-carousel');
+              owl.owlCarousel({
+                items: 4,
+                loop: true,
+                margin: 10,
+                autoplay: true,
+                autoplayTimeout: 1000,
+                autoplayHoverPause: true
+              });
+            });
+         });
+</script>
+
